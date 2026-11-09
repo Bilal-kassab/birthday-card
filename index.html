@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10132e" />
+    <meta name="description" content="A little birthday surprise, made with love for Hanan." />
+    <meta property="og:title" content="A little surprise for Hanan ✨" />
+    <meta property="og:description" content="A birthday surprise made with love. Open it!" />
+    <meta property="og:type" content="website" />
+    <title>For Hanan ✨ A Birthday Surprise</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="sky-dots" id="backgroundStars" aria-hidden="true"></div>
+    <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="brand" aria-label="The little birthday studio">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>the little birthday studio<span class="brand-dot">.</span></span>
+        </div>
+        <div class="header-actions">
+          <div class="step-tracker" id="stepTracker" hidden aria-label="Birthday surprise progress">
+            <span class="step-caption" id="stepCaption">01 / 04</span>
+            <div class="step-bars" aria-hidden="true">
+              <span class="step-bar"></span><span class="step-bar"></span>
+              <span class="step-bar"></span><span class="step-bar"></span>
+            </div>
+          </div>
+          <button class="sound-toggle" type="button" id="soundToggle" aria-pressed="false" aria-label="Turn sound on" title="Turn sound on">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+              <path class="sound-waves" d="M15.5 8.5a5 5 0 0 1 0 7M18 5a10 10 0 0 1 0 14" />
+              <path class="sound-cross" d="m16 9 5 6m0-6-5 6" />
+            </svg>
+            <span id="soundLabel">Sound off</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="mainContent">
+        <!-- INTRO -->
+        <section class="stage stage-intro" id="intro" aria-labelledby="introHeading">
+          <div class="intro-layout">
+            <div class="intro-copy">
+              <span class="eyebrow"><span class="eyebrow-sparkle">✦</span> a little something for you</span>
+              <h1 id="introHeading">It's your day,<br /><em>Hanan!</em> <span class="heading-sparkle" aria-hidden="true">✳</span></h1>
+              <p class="lead">Today is all about <strong>you.</strong><br />I made a little surprise. Just follow the magic.</p>
+              <button class="primary-button" type="button" id="startButton">
+                Start the surprise <span class="button-arrow" aria-hidden="true">↗</span>
+              </button>
+              <div class="small-note"><span aria-hidden="true">♥</span> Made with love by your uncle</div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hero-orbit hero-orbit-outer"></div>
+              <div class="hero-orbit hero-orbit-inner"></div>
+              <span class="hero-star hs-one">✳</span><span class="hero-star hs-two">✦</span><span class="hero-star hs-three">✧</span>
+              <span class="floating-label label-top">a special day ✨</span>
+              <div class="birthday-balloon balloon-pink"><span></span></div>
+              <div class="birthday-balloon balloon-yellow"><span></span></div>
+              <div class="birthday-balloon balloon-lavender"><span></span></div>
+              <div class="hero-poster">
+                <div class="poster-corner">✧</div>
+                <div class="hero-poster-letter">H</div>
+                <div class="poster-rule"></div>
+                <div class="poster-title">happy birthday</div>
+                <div class="poster-subtitle">to a wonderful girl</div>
+              </div>
+              <span class="floating-label label-bottom">made just for Hanan <span>♡</span></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 1: COLLECT STARS -->
+        <section class="stage stage-center" id="stars" aria-labelledby="starsHeading" hidden>
+          <div class="stage-heading">
+            <span class="eyebrow">first, a little magic ✦</span>
+            <h2 id="starsHeading">Light up <em>your sky.</em></h2>
+            <p>Tap any <strong>3 stars</strong> to make the night shine.</p>
+          </div>
+          <div class="star-playground" id="starPlayground" aria-label="Pick three shining stars">
+            <span class="orbit-line orbit-line-one" aria-hidden="true"></span>
+            <span class="orbit-line orbit-line-two" aria-hidden="true"></span>
+            <div class="moon" aria-hidden="true"><div class="moon-crater"></div></div>
+            <button class="pick-star s1" type="button" aria-label="Pick star 1" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s2" type="button" aria-label="Pick star 2" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s3" type="button" aria-label="Pick star 3" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s4" type="button" aria-label="Pick star 4" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s5" type="button" aria-label="Pick star 5" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s6" type="button" aria-label="Pick star 6" aria-pressed="false"><span>★</span></button>
+            <button class="pick-star s7" type="button" aria-label="Pick star 7" aria-pressed="false"><span>★</span></button>
+            <span class="tiny-spark ts1" aria-hidden="true">✧</span><span class="tiny-spark ts2" aria-hidden="true">✧</span><span class="tiny-spark ts3" aria-hidden="true">✧</span>
+          </div>
+          <div class="step-actions">
+            <p class="step-feedback" id="starFeedback" role="status" aria-live="polite">0 of 3 stars ✦</p>
+            <button class="primary-button" type="button" id="starsNext" disabled>Next surprise <span class="button-arrow" aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <!-- STEP 2: CAKE -->
+        <section class="stage stage-center" id="cake" aria-labelledby="cakeHeading" hidden>
+          <div class="stage-heading">
+            <span class="eyebrow">and now, a birthday wish ♡</span>
+            <h2 id="cakeHeading">Make a <em>little wish.</em></h2>
+            <p>Close your eyes, make a wish, then tap the candle.</p>
+          </div>
+          <div class="cake-scene" id="cakeScene">
+            <div class="cake-halo" aria-hidden="true"></div>
+            <span class="cake-spark cake-spark-one" aria-hidden="true">✧</span><span class="cake-spark cake-spark-two" aria-hidden="true">✦</span><span class="cake-spark cake-spark-three" aria-hidden="true">✧</span>
+            <div class="cake-drawing" aria-hidden="true">
+              <div class="cake-top-layer"><i class="icing-drip drip1"></i><i class="icing-drip drip2"></i><i class="icing-drip drip3"></i><i class="icing-drip drip4"></i></div>
+              <div class="cake-bottom-layer"><span class="cake-trim"></span><i class="sprinkle sprinkle1"></i><i class="sprinkle sprinkle2"></i><i class="sprinkle sprinkle3"></i><i class="sprinkle sprinkle4"></i><i class="sprinkle sprinkle5"></i><i class="sprinkle sprinkle6"></i></div>
+              <div class="cake-plate"></div>
+            </div>
+            <button id="candleButton" class="candle-button" type="button" aria-label="Blow out the birthday candle">
+              <span class="candle-flame"></span><span class="candle-stick"></span>
+            </button>
+            <span class="cake-shadow" aria-hidden="true"></span>
+          </div>
+          <div class="step-actions">
+            <p class="step-feedback" id="cakeFeedback" role="status" aria-live="polite">Tap the little flame ✨</p>
+            <button class="primary-button" type="button" id="cakeNext" disabled>One more surprise <span class="button-arrow" aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <!-- STEP 3: DRAWING -->
+        <section class="stage stage-center stage-art" id="art" aria-labelledby="artHeading" hidden>
+          <div class="stage-heading">
+            <span class="eyebrow">a little color, just like you 🎨</span>
+            <h2 id="artHeading">Let's make <em>some art.</em></h2>
+            <p>Draw a tiny wish. It can become part of your birthday card!</p>
+          </div>
+          <div class="art-workspace">
+            <div class="paper-topline"><span><span class="paper-spark">✳</span> Hanan's mini canvas</span><span class="paper-subtitle">made by you ♡</span></div>
+            <canvas id="drawingCanvas" width="740" height="310" aria-label="A drawing canvas. Use your finger or mouse to draw." role="img">Your browser doesn't support drawing.</canvas>
+            <div class="art-toolbar">
+              <div class="colors" role="group" aria-label="Brush colors">
+                <button type="button" class="color-swatch is-selected" data-color="#f4779b" style="--swatch:#f4779b" aria-label="Pink brush" aria-pressed="true"></button>
+                <button type="button" class="color-swatch" data-color="#9b8ff1" style="--swatch:#9b8ff1" aria-label="Purple brush" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#f4bc57" style="--swatch:#f4bc57" aria-label="Yellow brush" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#4bbeb5" style="--swatch:#4bbeb5" aria-label="Teal brush" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#6da3e8" style="--swatch:#6da3e8" aria-label="Blue brush" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#4d486b" style="--swatch:#4d486b" aria-label="Ink brush" aria-pressed="false"></button>
+              </div>
+              <div class="art-tools"><button class="text-tool" id="undoDrawing" type="button" disabled>↶ Undo</button><button class="text-tool" id="clearDrawing" type="button">Clear</button></div>
+            </div>
+          </div>
+          <div class="step-actions art-next"><p class="step-feedback">No perfect drawings needed. Just have fun. ♡</p><button class="primary-button" type="button" id="artNext">See your card <span class="button-arrow" aria-hidden="true">↗</span></button></div>
+        </section>
+
+        <!-- STEP 4: AN INTERACTIVE LETTER -->
+        <section class="stage stage-center stage-card" id="card" aria-labelledby="cardHeading" hidden>
+          <div class="stage-heading card-stage-heading" id="cardStageHeading">
+            <span class="eyebrow">the best part is here ♡</span>
+            <h2 id="cardHeading">One last <em>surprise.</em></h2>
+            <p>A little letter, made just for you. Tap to open it.</p>
+          </div>
+          <div class="card-reveal" id="cardReveal">
+            <button class="envelope-button" id="openCardButton" type="button" aria-label="Open your birthday letter">
+              <span class="envelope-glow"></span>
+              <span class="envelope-base"></span>
+              <span class="envelope-back"></span>
+              <span class="envelope-message">to Hanan <span aria-hidden="true">♡</span></span>
+              <span class="envelope-left"></span><span class="envelope-right"></span><span class="envelope-bottom"></span>
+              <span class="envelope-flap"></span>
+              <span class="envelope-seal">♥</span>
+              <span class="envelope-hint">tap to open <span aria-hidden="true">✧</span></span>
+            </button>
+            <article class="letter-card" id="letterCard" tabindex="-1" aria-label="Birthday message from your uncle">
+              <div class="letter-decoration" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦</div>
+              <span class="letter-eyebrow">especially for you, Hanan</span>
+              <h3>Happy Birthday, Hanan! <span aria-hidden="true">♡</span></h3>
+              <div class="letter-rule" aria-hidden="true"></div>
+              <!-- الرسالة العربية: يمكن تعديل النص داخل هذا العنصر مباشرة -->
+              <div class="arabic-letter" dir="rtl" lang="ar">
+                <p>إلى حنان، أول حفيدة بعيلتنا، وصاحبة المكانة يلي ما بتشبه حدا. 💗</p>
+                <p>كل سنة وإنتِ بألف خير يا حنونة!</p>
+                <p>من يوم ما كنتِ صغيرة وإنتِ إلك فرحة خاصة بقلوبنا. وهلأ عم شوفك تكبري، وتكبَر معك أحلامك وموهبتك الحلوة بالرسم.</p>
+                <p>والأحلى انو الفرق بيني وبينك بالعمر بسيط ، يعني أنا خالك… بس كمان بحس حالي رفيق كبر معك شوي شوي. 😄</p>
+                <p>بعرف إنك الكبيرة بين إخواتك، بس بتمنى تضلّي دايمًا تعيشي فرحتك، وتضحكي من قلبك، وترسمي أحلامك بألوانك إنتِ، مو بألوان حدا تاني.</p>
+                <p>بتمنالك سنة مليانة نجاح وراحة بال ولحظات حلوة، وكل رسمة ترسميها تقرّبك من حلم بتحبيه.</p>
+                <p>الله يحميكي ويسعد قلبك، وتبقي حنان اللي منفتخر فيها ويلي منحبها كتير. ❤️</p>
+                <p class="letter-signature">كل عام وإنتي بخير يا حنان<br /><strong>خالك اللي بحبك ♡ Bilal Kassb</strong></p>
+              </div>
+              <div class="personal-art" id="personalArt" hidden>
+                <span>Your little masterpiece ✨</span>
+                <img id="artPreview" alt="The little drawing you made during your surprise" />
+                <button id="downloadArt" class="download-art" type="button">Save my art ↓</button>
+              </div>
+              <div class="letter-buttons"><button class="restart-button" id="restartButton" type="button"><span aria-hidden="true">↺</span> See the magic again</button></div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>✦</span> just for Hanan <span class="footer-heart">♥</span> made By Ur Uncle Bilal Kassab</footer>
+    </div>
+  </body>
+</html>
