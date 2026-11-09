@@ -36,14 +36,11 @@
               <span class="step-bar"></span><span class="step-bar"></span>
             </div>
           </div>
-          <button class="sound-toggle" type="button" id="soundToggle" aria-pressed="false" aria-label="Turn sound on" title="Turn sound on">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M11 5 6 9H3v6h3l5 4V5Z" />
-              <path class="sound-waves" d="M15.5 8.5a5 5 0 0 1 0 7M18 5a10 10 0 0 1 0 14" />
-              <path class="sound-cross" d="m16 9 5 6m0-6-5 6" />
-            </svg>
-            <span id="soundLabel">Sound off</span>
-          </button>
+          <div class="music-status" id="musicStatus" aria-label="Background music starts with your first touch and stays on">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            <span id="soundLabel">Music ready</span>
+            <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
         </div>
       </header>
 
@@ -56,7 +53,7 @@
               <h1 id="introHeading">It's your day,<br /><em>Hanan!</em> <span class="heading-sparkle" aria-hidden="true">✳</span></h1>
               <p class="lead">Today is all about <strong>you.</strong><br />I made a little surprise. Just follow the magic.</p>
               <button class="primary-button" type="button" id="startButton">
-                Start the surprise <span class="button-arrow" aria-hidden="true">↗</span>
+                Start the surprise <span class="button-arrow" aria-hidden="true">↗</span><span class="tap-gesture" aria-hidden="true">👆</span>
               </button>
               <div class="small-note"><span aria-hidden="true">♥</span> Made with love by your uncle</div>
             </div>
@@ -85,7 +82,7 @@
           <div class="stage-heading">
             <span class="eyebrow">first, a little magic ✦</span>
             <h2 id="starsHeading">Light up <em>your sky.</em></h2>
-            <p>Tap any <strong>3 stars</strong> to make the night shine.</p>
+            <p>Three little stars are waiting to shine.</p>
           </div>
           <div class="star-playground" id="starPlayground" aria-label="Pick three shining stars">
             <span class="orbit-line orbit-line-one" aria-hidden="true"></span>
@@ -111,7 +108,7 @@
           <div class="stage-heading">
             <span class="eyebrow">and now, a birthday wish ♡</span>
             <h2 id="cakeHeading">Make a <em>little wish.</em></h2>
-            <p>Close your eyes, make a wish, then tap the candle.</p>
+            <p>A little wish, just for you. ✨</p>
           </div>
           <div class="cake-scene" id="cakeScene">
             <div class="cake-halo" aria-hidden="true"></div>
@@ -127,7 +124,7 @@
             <span class="cake-shadow" aria-hidden="true"></span>
           </div>
           <div class="step-actions">
-            <p class="step-feedback" id="cakeFeedback" role="status" aria-live="polite">Tap the little flame ✨</p>
+            <p class="step-feedback" id="cakeFeedback" role="status" aria-live="polite">✧ ✦ ✧</p>
             <button class="primary-button" type="button" id="cakeNext" disabled>One more surprise <span class="button-arrow" aria-hidden="true">↗</span></button>
           </div>
         </section>
@@ -162,7 +159,7 @@
           <div class="stage-heading card-stage-heading" id="cardStageHeading">
             <span class="eyebrow">the best part is here ♡</span>
             <h2 id="cardHeading">One last <em>surprise.</em></h2>
-            <p>A little letter, made just for you. Tap to open it.</p>
+            <p>A little letter, made just for you. ♡</p>
           </div>
           <div class="card-reveal" id="cardReveal">
             <button class="envelope-button" id="openCardButton" type="button" aria-label="Open your birthday letter">
@@ -173,7 +170,7 @@
               <span class="envelope-left"></span><span class="envelope-right"></span><span class="envelope-bottom"></span>
               <span class="envelope-flap"></span>
               <span class="envelope-seal">♥</span>
-              <span class="envelope-hint">tap to open <span aria-hidden="true">✧</span></span>
+              <span class="envelope-hint" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦</span>
             </button>
             <article class="letter-card" id="letterCard" tabindex="-1" aria-label="Birthday message from your uncle">
               <div class="letter-decoration" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦</div>
@@ -182,14 +179,14 @@
               <div class="letter-rule" aria-hidden="true"></div>
               <!-- الرسالة العربية: يمكن تعديل النص داخل هذا العنصر مباشرة -->
               <div class="arabic-letter" dir="rtl" lang="ar">
-                <p>إلى حنان، أول حفيدة بعيلتنا، وصاحبة المكانة يلي ما بتشبه حدا. 💗</p>
+                <p>إلى حنان، أول حفيدة في عيلتنا، وصاحبة مكانة ما بتشبه حدا. 💗</p>
                 <p>كل سنة وإنتِ بألف خير يا حنونة!</p>
                 <p>من يوم ما كنتِ صغيرة وإنتِ إلك فرحة خاصة بقلوبنا. وهلأ عم شوفك تكبري، وتكبَر معك أحلامك وموهبتك الحلوة بالرسم.</p>
-                <p>والأحلى انو الفرق بيني وبينك بالعمر بسيط ، يعني أنا خالك… بس كمان بحس حالي رفيق كبر معك شوي شوي. 😄</p>
+                <p>والأحلى إن الفرق بيني وبينك تقريبًا سبع سنين بس، يعني أنا خالك… بس كمان بحس حالي رفيق كبر معك شوي شوي. 😄</p>
                 <p>بعرف إنك الكبيرة بين إخواتك، بس بتمنى تضلّي دايمًا تعيشي فرحتك، وتضحكي من قلبك، وترسمي أحلامك بألوانك إنتِ، مو بألوان حدا تاني.</p>
                 <p>بتمنالك سنة مليانة نجاح وراحة بال ولحظات حلوة، وكل رسمة ترسميها تقرّبك من حلم بتحبيه.</p>
-                <p>الله يحميكي ويسعد قلبك، وتبقي حنان اللي منفتخر فيها ويلي منحبها كتير. ❤️</p>
-                <p class="letter-signature">كل عام وإنتي بخير يا حنان<br /><strong>خالك اللي بحبك ♡ Bilal Kassb</strong></p>
+                <p>الله يحميكِ ويسعد قلبك، وتبقي حنان اللي منفتخر فيها ومنحبها كتير. ❤️</p>
+                <p class="letter-signature">كل عام وإنتِ بخير يا حنان<br /><strong>خالك اللي بحبك ♡</strong></p>
               </div>
               <div class="personal-art" id="personalArt" hidden>
                 <span>Your little masterpiece ✨</span>
@@ -202,7 +199,7 @@
         </section>
       </main>
 
-      <footer class="site-footer"><span>✦</span> just for Hanan <span class="footer-heart">♥</span> made By Ur Uncle Bilal Kassab</footer>
+      <footer class="site-footer"><span>✦</span> just for Hanan <span class="footer-heart">♥</span> made with love</footer>
     </div>
   </body>
 </html>
